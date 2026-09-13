@@ -21,7 +21,7 @@ export function useNewsDigest() {
 
     const params = new URLSearchParams();
     if (topic) params.set("topic", topic);
-    params.set("max_articles", "10");
+    params.set("max_articles", "6");
 
     try {
       const res = await fetch(`${API_BASE}/api/news?${params.toString()}`, {
