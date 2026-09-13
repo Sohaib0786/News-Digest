@@ -46,7 +46,14 @@ async def unhandled_exception_handler(request, exc):
         ).model_dump(),
     )
 
-
+@app.get("/")
+def root():
+    return {
+        "message": "News Digest API is running",
+        "docs": "/docs",
+        "health": "/api/health",
+        "news": "/api/news"
+    }
 @app.get("/api/health")
 def health():
     return {"status": "ok", "time": datetime.now(timezone.utc).isoformat()}
