@@ -38,7 +38,8 @@ export function useNewsDigest() {
 
       if (!res.ok) {
         const detail = payload && (payload.detail || payload.error);
-        throw new Error(detail || `Request failed with status ${res.status}.`);
+        const detailMsg = typeof detail === "string" ? detail : JSON.stringify(detail || detail === 0 ? detail : null);
+        throw new Error(detailMsg || `Request failed with status ${res.status}.`);
       }
 
       setArticles(payload.articles || []);
