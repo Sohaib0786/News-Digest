@@ -11,8 +11,28 @@ export default function FootMeta({ meta }) {
 
   return (
     <footer className="foot">
-      {meta.articleCount} articles &middot; searched &ldquo;{meta.searchQueryUsed}&rdquo;
-      {time ? ` \u00B7 updated ${time}` : ""}
+      <svg
+        className="foot__icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+      <span>{meta.articleCount} articles</span>
+      <span className="foot__sep">&middot;</span>
+      <span>searched &ldquo;{meta.searchQueryUsed}&rdquo;</span>
+      {time && (
+        <>
+          <span className="foot__sep">&middot;</span>
+          <span>updated {time}</span>
+        </>
+      )}
     </footer>
   );
 }

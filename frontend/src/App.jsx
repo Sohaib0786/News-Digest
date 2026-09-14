@@ -43,8 +43,8 @@ export default function App() {
             <EmptyState />
           ) : (
             <>
-              {articles.map((article) => (
-                <ArticleCard key={`${article.rank}-${article.url}`} article={article} />
+              {articles.map((article, index) => (
+                <ArticleCard key={`${article.rank}-${article.url}`} article={article} index={index} />
               ))}
               <WarningsList warnings={warnings} />
             </>

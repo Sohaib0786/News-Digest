@@ -9,13 +9,16 @@ function formatDate(value) {
   });
 }
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article, index = 0 }) {
   const rankLabel = String(article.rank).padStart(2, "0");
   const points = article.summary_points || [];
   const tags = article.topic_tags || [];
 
   return (
-    <article className={`card${article.summarized ? "" : " card--fallback"}`}>
+    <article
+      className={`card${article.summarized ? "" : " card--fallback"}`}
+      style={{ animationDelay: `${index * 0.08}s` }}
+    >
       <div className="card__rank">{rankLabel}</div>
       <div className="card__body">
         <div className="card__meta">
@@ -32,12 +35,25 @@ export default function ArticleCard({ article }) {
             rel="noopener noreferrer"
           >
             {article.title}
+            <svg
+              className="card__link-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17L17 7" />
+              <path d="M7 7h10v10" />
+            </svg>
           </a>
         </h2>
 
         <ul className="card__points">
-          {points.map((point, index) => (
-            <li key={index}>{point}</li>
+          {points.map((point, idx) => (
+            <li key={idx}>{point}</li>
           ))}
         </ul>
 

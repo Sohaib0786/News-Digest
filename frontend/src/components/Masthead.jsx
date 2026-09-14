@@ -9,7 +9,14 @@ export default function Masthead({ status }) {
   return (
     <header className="masthead">
       <div className="masthead__top">
-        <span className="wordmark">Signal</span>
+        <span className="wordmark">
+          <span className="wordmark__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#1A0F00" />
+            </svg>
+          </span>
+          News Digest
+        </span>
         <span className={`status status--${status}`}>
           <span className="status__dot" />
           <span>{STATUS_LABEL[status]}</span>
